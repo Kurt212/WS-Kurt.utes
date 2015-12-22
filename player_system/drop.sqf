@@ -14,7 +14,7 @@ _data = GET_SELECTED_DATA(item_list);
 if(_data == "") exitWith {hint "You didn't select anything to drop";};
 if(dropActive) exitwith {hint "You're already dropping something";};
 if(vehicle player != player) exitwith {hint "You can't use this action while in a vehicle."};
-player playmove "AinvPknlMstpSnonWnonDnon_1";
+player playmove "AinvPknlMstpSlayWrflDnon_AmovPknlMstpSrasWrflDnon";
 dropActive = true;
 sleep 1.5;
 _pos = getPosATL player;

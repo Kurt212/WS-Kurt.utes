@@ -8,7 +8,7 @@ if(vehicle player != player) exitWith {titleText["You can't repair the vehicle w
 
 if(isNil {_vehicle}) exitwith {titleText["No vehicle within range","PLAIN"];};
 
-player playmove "AinvPknlMstpSnonWnonDnon_1";
+player playmove "AinvPknlMstpSnonWnonDr_medic5";
 titleText [format["Repairing %1", _veh_type], "PLAIN"];
 
 

@@ -17,7 +17,7 @@ if(MoneyInUse) exitwith {hint "You are already dropping money.";};
 if((WSVAR_MONEY < _money) OR (WSVAR_MONEY <= 0)) exitwith {hint format["You don't have $%1 to drop", _money];};
 MoneyInUse = true;
 _pos = getPosATL player;
-player playmove "AinvPknlMstpSnonWnonDnon_1";
+player playmove "AinvPknlMstpSlayWrflDnon_AmovPknlMstpSrasWrflDnon";
 sleep 1.5;
 _cash = createVehicle [WS_MONEY, position player, [], 0, "CAN_COLLIDE"]; 
 _cash setPos _pos;

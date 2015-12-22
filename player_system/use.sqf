@@ -37,7 +37,7 @@ switch(_data) do{
 	case "canfood": 
 	{
 		if(WSVAR_CannedFood > 0) then{
-			if((vehicle player) == player) then { player playmove "AinvPknlMstpSnonWnonDnon_1"; };
+			if((vehicle player) == player) then { player playmove "AinvPknlMstpSlayWrflDnon_AmovPknlMstpSrasWrflDnon"; };
 			WSVAR_CannedFood = WSVAR_CannedFood - 1;
 			if(WSVAR_FOOD + 60 > 100) then {WSVAR_FOOD = 100;}
 			else {WSVAR_FOOD = WSVAR_FOOD + 60;};
@@ -48,7 +48,7 @@ switch(_data) do{
 	case "water": 
 	{
 		if(WSVAR_BottleWater > 0) then{
-			if((vehicle player) == player) then { player playmove "AinvPknlMstpSnonWnonDnon_1"; };
+			if((vehicle player) == player) then { player playmove "AinvPknlMstpSlayWrflDnon_AmovPknlMstpSrasWrflDnon"; };
 			WSVAR_BottleWater = WSVAR_BottleWater - 1;
 			if(WSVAR_WATER + 60 > 100) then {WSVAR_WATER = 100;}
 			else {WSVAR_WATER = WSVAR_WATER + 60;};

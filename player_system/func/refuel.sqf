@@ -12,7 +12,7 @@ if(vehicle player != player) exitWith {titleText["You can't refuel the vehicle w
 WSVAR_FuelCan = WSVAR_FuelCan - 1;
 
 titleText [format["Refueling %1", _veh_type], "PLAIN"];
-player playmove "AinvPknlMstpSnonWnonDnon_1";
+player playmove "AinvPknlMstpSnonWnonDr_medic5";
 
 sleep 1.5;
 
