@@ -16,8 +16,10 @@ waitUntil{!isnil "bis_fnc_init"}; // ну тут хотя бы понятно ..
 showTagsEnabled = 0; // для отрисовки TAG'ов с никами
 WSVAR_SIDE = side player; // пригодится для некоторых вещей
 
+onKeyDown = compile preprocessFile "core\client\handlers\onKeyDown.sqf";
+
 waitUntil {!(isNull (findDisplay 46))}; // хрен знает что такое Display 46
-(findDisplay 46) displaySetEventHandler ["KeyDown", '_this execVM  "core\client\handlers\onKeyDown";']; // обработка нажатия клавиш
+(findDisplay 46) displaySetEventHandler ["KeyDown", '_this call onKeyDown']; // обработка нажатия клавиш
 
 // сразу обазначу путь к файлу TAG'a
 switch(WSVAR_SIDE) do {
@@ -31,6 +33,7 @@ player addRating 999999;
 
 // включим отрисовку TAG'ов
 [] execVM "core\client\first_enter\drawTags.sqf";
+
 // не самая красивая часть
 [] spawn{
 	while {true} do{

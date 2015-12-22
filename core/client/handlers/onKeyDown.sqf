@@ -14,22 +14,24 @@ _alt = _this select 4;
 
 //hintSilent str[_key];
 
-
+_return = false;
 
 
 switch(_key) do{
-	DIK_LWIN : {
+	case DIK_LWIN : {
 		switch(showTagsEnabled) do{
-			1 : showTagsEnabled = 0;
-			0 : showTagsEnabled = 1;
+			case 1 : {showTagsEnabled = 0};
+			case 0 : {showTagsEnabled = 1};
 		};
+		_return = true;
 	};
 
-	DIK_GRAVE : {
+	case DIK_GRAVE : {
 		[] call pm_fnc_init;
+		_return = true;
 	};
 
-	DIK_INSERT : {
+	case DIK_INSERT : {
 		if(soundVolume == 1) then {
 			0 fadeSound 0.05; 
 			titleText ["Вы надели беруши","PLAIN", 0.3];
@@ -37,7 +39,10 @@ switch(_key) do{
 		else{
 			0 fadeSound 1;
 			showDinamics = 0; // наивный. Он хотел добавить значек динамиков в худ, когда надеты беруши
-			titleText ["Вы сняли беруши","PLAIN", 0.3];
+		;titleText ["Вы сняли беруши","PLAIN", 0.3];
 		};
+		_return = true;
 	};
 };
+
+_return;
