@@ -35,7 +35,7 @@ _ncar = 0;
 	for "_i" from 0 to _number do{   
 		_ncar = _ncar + 1;
 		[_x] call ws_fnc_spawnRandomVehicle;   
-		uisleep 0.1;
+		sleep 0.1;
 	};  
 }forEach towns;
 

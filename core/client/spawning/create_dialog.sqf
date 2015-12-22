@@ -62,7 +62,7 @@ for "_i" from 0 to _n do{
 	_btn = _display displayCtrl ((_dynamicControlsArray select _i) select 0);
 	_text_btn = (towns_free select _i) select 1;
 	_btn ctrlSetText _text_btn;
-	_btn ctrlAddEventHandler["ButtonClick", {[(_this select 0)] execVM "core\client\spawning\onSpawnSelected.sqf"; closeDialog 0;}];
+	_btn ctrlAddEventHandler["ButtonClick", {[CtrlText(_this select 0)] execVM "core\client\spawning\onSpawnSelected.sqf"; closeDialog 0;}];
 
 	_btn ctrlEnable true;
 		

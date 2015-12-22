@@ -16,8 +16,14 @@ _marker = _arr_markers call BIS_fnc_selectRandom;
 
 _new_vpos = getMarkerPos _marker;
 
+
+if(_new_vpos findEmptyPositionReady [1, 30]) then{
+	_new_vpos = _new_vpos findEmptyPosition [1, 30];
+};
+
 _return = createVehicle [_veh, _new_vpos, [], 0, "NONE"];
 
+_return setpos [((position _return) select 0), ((position _return) select 1), ((position _return) select 2) + 0.1];
 
 clearWeaponCargoGlobal _return; clearMagazineCargoGlobal _return; clearItemCargoGlobal _return;
 _return setFuel (random 1); _return setDamage (random .50); _return setDir (random 360);

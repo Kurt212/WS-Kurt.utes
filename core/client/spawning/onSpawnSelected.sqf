@@ -2,13 +2,13 @@ private["_text", "_town"];
 
 player hideobject false;
 
-_ctrl = _this select 0;
+_text = _this select 0;
 
-if(isNull _ctrl) then{
+if(_text == 'Random') then{
 	_town = towns call BIS_fnc_selectRandom;
 }
-else{
-	_text = CtrlText _ctrl;
+else
+{
 	{
 		if(_text == (_x select 1)) exitwith {_town = _x select 0;};
 	}foreach towns_free;
@@ -21,7 +21,12 @@ _spawn = getMarkerPos _marker;
 SpawnedTownInfo = _town;
 publicVariableServer "SpawnedTownInfo";
 
+if(_spawn findEmptyPositionReady [1, 30]) then{
+	_spawn = _spawn findEmptyPosition [1, 30];
+};
+
 player setpos _spawn;
 player setPos [getPos player select 0, getPos player select 1, getPos player select 2];
+player setDir random(360);
 
 respawnDialogActive = nil;

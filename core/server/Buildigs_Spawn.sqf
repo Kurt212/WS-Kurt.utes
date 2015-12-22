@@ -142,7 +142,7 @@ _l setdir 104.325;
 _l =   createvehicle ["Land_Wall_Tin_4", [3859.8,3375.7,0.26282299 - 0.4], [], 0, "CAN_COLLIDE"];  
 _l setdir 18.542101;
 
-_l =   createvehicle ["Land_A_BuildingWIP", [3903.47,3376.9399,0.2], [], 0, "CAN_COLLIDE"];    
+_l =   createvehicle ["Land_A_BuildingWIP", [3903.47,3376.9399,0.1], [], 0, "CAN_COLLIDE"];    
 _l setdir 198.743;
 
 _l =   createvehicle ["Land_Wall_Tin_4", [3857.46,3403.21,0.52377099 - 0.4], [], 0, "CAN_COLLIDE"];  

@@ -1,7 +1,10 @@
 Spawn_Markers = [];
 
-for "_i" from 0 to 100 do{
+_i = 0;
+while{!((getMarkerPos format["Spawn_%1", _i]) isEqualTo [0,0,0])} do
+{
 	Spawn_Markers pushback format["Spawn_%1", _i];
+	_i = _i + 1;
 };
 
 waituntil{!isNil"towns"};

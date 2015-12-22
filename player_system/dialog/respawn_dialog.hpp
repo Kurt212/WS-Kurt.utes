@@ -148,7 +148,7 @@
 		class RandomSpawnButton: w_RscButton
 		{
 			idc = -1;
-			onButtonClick = "[controlNull] execVM 'core\client\spawning\onSpawnSelected.sqf'; closeDialog 0;";
+			onButtonClick = "[CtrlText(_this select 0)] execVM 'core\client\spawning\onSpawnSelected.sqf'; closeDialog 0;";
 			text = "Random";
 
 			x = 0.343* safezoneW + safezoneX;

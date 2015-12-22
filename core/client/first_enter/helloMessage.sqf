@@ -13,4 +13,4 @@ WelcomeMessage = composeText[
 							];
 
 waitUntil{!isNil"PlayerFirstSpawn"};							
-[parseText format["%1",WelcomeMessage], safeZoneW*0.3 + safeZonex, safeZoneH*0.2, 10, 0, 0, 1] spawn BIS_fnc_dynamicText
+[parseText format["%1",WelcomeMessage], "Welcome!", true, false]spawn BIS_fnc_guiMessage;
