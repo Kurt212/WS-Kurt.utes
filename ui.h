@@ -40,6 +40,7 @@
 				h = 0.05;
 				text = "source\healthIcon.paa";
 			};
+
 			class WaterMark : w_RscText 
 			{
 				idc= -1;
@@ -107,6 +108,7 @@
 				shadow=true;
 				text="";
 			};
+			
 			class VehicleInfo : w_RscText
 			{
 				type=13;

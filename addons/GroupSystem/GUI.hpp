@@ -139,8 +139,10 @@ class k_RscEdit
   	autocomplete = false;
 };
 
-#define XCoord (safeZoneX+safeZoneW*0.35)
-#define YCoord (safeZoneY+safeZoneH*0.3)
+//#define XCoord (safeZoneX+safeZoneW*0.35)
+//#define YCoord (safeZoneY+safeZoneH*0.3)
+#define XCoord (0.0)
+#define YCoord (0.1)
 
 class GroupSystem {
 
@@ -175,7 +177,7 @@ class GroupSystem {
 		class GroupList : k_Rsclist {
 		
 			idc = UIGROUPLIST;
-			onLBSelChanged = "_this call Kurt_fnc_UIGroupInfoShow; params['_ctrl', '_index']; _data = _ctrl lbData _index; if(_data != '') then {hint str(_data);};";
+			onLBSelChanged = "_this call Kurt_fnc_UIGroupInfoShow; params['_ctrl', '_index']; _data = _ctrl lbData _index;";
 	
 			x = XCoord + .05; y = YCoord + .1;
 			w = 0.35; h = 0.4;
@@ -226,7 +228,7 @@ class GroupSystem {
 			idc = 204;
 			text = "Join";
 			style = ST_CENTER;
-			onButtonClick = "_dialog = findDisplay 9500; _line = _dialog displayCtrl 203; _password = ctrlText _line; _list = _dialog displayCtrl 200; _index = lbCurSel _list; _id = _list lbData(_index); _res = [_id, _password] call Kurt_fnc_GroupJoin; hint str [_id, _password]; call Kurt_fnc_UIGroupRefresh; [_dialog displayCtrl 201, _index] call Kurt_fnc_UIGroupInfoShow;";
+			onButtonClick = "_dialog = findDisplay 9500; _line = _dialog displayCtrl 203; _password = ctrlText _line; _list = _dialog displayCtrl 200; _index = lbCurSel _list; _id = _list lbData(_index); _res = [_id, _password] call Kurt_fnc_GroupJoin; call Kurt_fnc_UIGroupRefresh; [_dialog displayCtrl 201, _index] call Kurt_fnc_UIGroupInfoShow;";
 			size = 0.035;
 			sizeEx = 0.035;
 			x = XCoord + .3; y = YCoord + .52;
@@ -287,7 +289,7 @@ class CreateGroup {
 			text = "addons\GroupSystem\src\ui_background_controlers_ca.paa";
 			
 			x = XCoord; y = YCoord;
-			w = 0.70; h = 0.3;
+			w = 0.75; h = 0.3;
 		
 		};
 		
@@ -297,7 +299,7 @@ class CreateGroup {
 			text = "Create a new group";
 			sizeEx = 0.04;
 			
-			x = XCoord + .12; y = YCoord + .025;
+			x = XCoord + .145; y = YCoord + .025;
 			w = 0.3; h = 0.05;
 		
 		};
@@ -317,7 +319,7 @@ class CreateGroup {
 			idc = 203;
 			style = ST_LEFT+ST_FRAME;
 			sizeEx = 0.03;
-			x = XCoord + .23 ; y = YCoord + .08;
+			x = XCoord + .28 ; y = YCoord + .08;
 			w = 0.27; h = 0.035;
 		};
 		
@@ -325,15 +327,16 @@ class CreateGroup {
 			idc = 201;
 			style = ST_LEFT+ST_FRAME;
 			sizeEx = 0.03;
-			x = XCoord + .23 ; y = YCoord + .14;
+			x = XCoord + .28 ; y = YCoord + .14;
 			w = 0.27; h = 0.035;
 		};
 		
 		class CheckBox : k_RscButton{
 			idc = 202;
 			text = "Enable Password";
+			style = ST_CENTER;
 			x = XCoord + .018; y = YCoord + .14;
-			w = 0.18; h = 0.035;
+			w = 0.23; h = 0.035;
 			size = 0.025;
 			sizeEx = 0.035;
 			onButtonClick = "_ctr = _this select 0; _Dialog = findDisplay 9501; _l = _Dialog displayCtrl 201; if(ctrlText _ctr == 'Enable Password') then {_ctr ctrlSetText 'Disable Password'; _l ctrlShow true;} else {_ctr ctrlSetText 'Enable Password'; _l ctrlShow false; _l ctrlSetText '';};";

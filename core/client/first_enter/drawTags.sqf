@@ -1,5 +1,8 @@
 private ["_code"];
 
+#define MaxDistance WSVAR_TAGS_DRAW_DISTANCE
+
+
 if(WSVAR_SIDE == resistance) then{
 	_code =
 	{
@@ -10,7 +13,7 @@ if(WSVAR_SIDE == resistance) then{
 		};
 		_unit = units (group player) - [player];     
 		{        
-			_bool = (player distance _x < 700) && (player distance _x <= viewDistance) && !(isObjectHidden _x);        
+			_bool = (player distance _x < MaxDistance) && (player distance _x <= viewDistance) && !(isObjectHidden _x);        
 			if((_bool) && (vehicle player != vehicle _x) && (alive player)) then {          
 				_playerPosVisual = getPosVisual  _x;
 				_playerPosATL = getPosATLVisual _x;
@@ -19,8 +22,8 @@ if(WSVAR_SIDE == resistance) then{
 				else {
 					_playerPos = _playerPosATL;
 				};      
-				_size = [0, 700, 0.02, 0.035, player distance _x] call _fnc_proportion; 
-				_sizeIcon = [0, 700, 0.2, 0.7, player distance _x] call _fnc_proportion;
+				_size = [0, MaxDistance, 0.02, 0.03, player distance _x] call _fnc_proportion; 
+				_sizeIcon = [0, MaxDistance-200, 0.1, 0.4, player distance _x] call _fnc_proportion;
 				_color = [];     
 				if( groupId ( group _x) == groupId (group player)) then { _color = [0.8,1,0,1];}     
 				else { _color = [0,0.5,1,1]; }; 					
@@ -40,7 +43,7 @@ else {
 		};
 		_unit = allUnits - [player];     
 		{        
-			_bool = (player distance _x < 700) && (player distance _x <= viewDistance)  && !(isObjectHidden _x);        
+			_bool = (player distance _x < MaxDistance) && (player distance _x <= viewDistance)  && !(isObjectHidden _x);        
 			if((WSVAR_SIDE == side _x) && (_bool) && (vehicle player != vehicle _x) && (alive player)) then {          
 				_playerPosVisual = getPosVisual  _x;
 				_playerPosATL = getPosATLVisual _x;
@@ -49,8 +52,8 @@ else {
 				else {
 					_playerPos = _playerPosATL;
 				};
-				_size = [0, 700, 0.02, 0.03, player distance _x] call _fnc_proportion; 
-				_sizeIcon = [0, 500, 0.1, 0.4, player distance _x] call _fnc_proportion;
+				_size = [0, MaxDistance, 0.02, 0.03, player distance _x] call _fnc_proportion; 
+				_sizeIcon = [0, MaxDistance-200, 0.1, 0.4, player distance _x] call _fnc_proportion;
 				if(_sizeIcon < 0.1) then {_sizeIcon = 0.1};
 				_color = [];   
 

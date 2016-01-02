@@ -55,6 +55,7 @@ if !(IsDedicated) then{
 		if(!_return) then{
 			systemchat "Can not leave group";
 		};
+		call Kurt_fnc_UIGroupRefresh;
 		_return
     };
        
@@ -165,12 +166,25 @@ if !(IsDedicated) then{
 			{if(groupId _x == _data) exitwith{_group = _x;};} foreach allGroups;
 			_group
 		};
+
+		_has_password = [groupId _g] call Kurt_fnc_GroupHasPassword;
 		
 		if(isNull _g) then{
 			systemchat "Group is null!";
 		};		
 		
-		_str = "Information : <br/>";
+		_str = "Information : <br/>The group ";
+
+		if(_has_password) then
+		{
+			_str = _str + " <t color='#D00000'>has password</t>";
+		}
+		else
+		{
+			_str = _str + " <t color='#D00000'>has <t underline='true'>no</t> password</t>";
+		};
+		_str = _str + "<br/>";
+
 		_count = 0;
 		{	
 			_count = _count + 1;
@@ -183,8 +197,8 @@ if !(IsDedicated) then{
 		_txt ctrlSetStructuredText parseText _str;	
 		
 		//активируем или дизактивируем поле пароля
-		
 		_has_password = [groupId _g] call Kurt_fnc_GroupHasPassword;
+
 		_password_line = _Dialog displayCtrl 203;
 		if(_has_password) then{
 			_password_line ctrlSetText "";

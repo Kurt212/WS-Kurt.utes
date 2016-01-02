@@ -117,16 +117,6 @@ class playerSettings {
 		w = 0.231; h = 0.4;
 		
 		};
-		/*
-		class itemEdit : w_RscCombo {
-		
-		idc = item_edit;
-		
-		x = 0.49; y = 0.55;
-		w = 0.235; h = 0.03;
-		
-		};
-		*/
 		
 		class moneyInput: w_RscCombo {
 			
@@ -139,7 +129,7 @@ class playerSettings {
 		class DropButton : w_RscButton {
 			
 			text = "Drop";
-			onButtonClick = "[] spawn pm_fnc_drop";
+			onButtonClick = "[2, _this select 0] execVM 'player_system\func\drop.sqf'";
 			size = 0.026;
 			sizeEx = 0.026;
 			
@@ -151,7 +141,7 @@ class playerSettings {
 		class UseButton : w_RscButton {
 			
 			text = "Use";
-			onButtonClick = "[] spawn pm_fnc_use";
+			onButtonClick = "[_this select 0] execVM 'player_system\func\use.sqf'";
 			size = 0.026;
 			sizeEx = 0.026;
 			x = 0.48; y = 0.63;
@@ -162,7 +152,8 @@ class playerSettings {
 		class DropcButton : w_RscButton {
 
 			text = "Drop Money";
-			onButtonClick = "[] spawn pm_fnc_drop_money";
+			//onButtonClick = "[] spawn pm_fnc_drop_money";
+			onButtonClick = "[1, _this select 0] execVM 'player_system\func\drop.sqf'";
 			size = 0.026;
 			sizeEx = 0.026;
 			
@@ -192,7 +183,7 @@ class playerSettings {
 
 		class  settings: w_RscButton {
 			text = "Settings";
-			onButtonClick = "[] spawn pm_fnc_settingslist";
+			onButtonClick = "createDialog 'SettingsList';";
 		
 			x = 0.02; y = 0.63;
 			w = 0.125; h = 0.05;

@@ -1,3 +1,8 @@
+onLoadMission = "Wasteland-Utes by Kurt";
+onLoadIntro = "Many thanks to Sa-Matra and Tonic";
+author = "Kurt";
+
+
 enableDebugConsole = 1;
 joinUnassigned = 0;
 disabledAI = 1;

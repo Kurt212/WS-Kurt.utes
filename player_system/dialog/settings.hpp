@@ -1,8 +1,13 @@
+#define XCoord 0.25
+#define YCoord 0.35
+
+
 class SettingsList {
 
 	idd = 212;
 	movingEnable = true;
 	enableSimulation = true;
+	onLoad = "_this execVM 'player_system\settings_list.sqf';";
 	class controlsBackground {
 		
 		class MainBG : w_RscPicture {
@@ -12,8 +17,8 @@ class SettingsList {
 			
 			moving = true;
 			
-			x = 0.0; y = 0.1;
-			w = 0.70; h = 0.30;
+			x = XCoord; y = YCoord;
+			w = 0.70; h = 0.40;
 		
 		};
 		
@@ -23,7 +28,7 @@ class SettingsList {
 			text = "Settings menu";
 			sizeEx = 0.04;
 			
-			x = 0.17; y = 0.13;
+			x = XCoord + 0.17; y = YCoord + 0.03;
 			w = 0.3; h = 0.05;
 		
 		};
@@ -33,7 +38,7 @@ class SettingsList {
 			text = "View distance(min 200):";
 			sizeEx = 0.03;
 			
-			x = 0.01; y = 0.19;
+			x = XCoord + 0.01; y = YCoord + 0.09;
 			w = 0.3; h = 0.05;
 		
 		};
@@ -43,9 +48,17 @@ class SettingsList {
 			text = "Object view distance  :";
 			sizeEx = 0.03;
 			
-			x = 0.01; y = 0.24;
+			x = XCoord + 0.01; y = YCoord + 0.14;
 			w = 0.3; h = 0.05;
+		};
+		class TagsDrawDistanceText : w_RscText {
 		
+			idc = -1;
+			text = "Tags draw distance  :";
+			sizeEx = 0.03;
+			
+			x = XCoord + 0.01; y = YCoord + 0.19;
+			w = 0.3; h = 0.05;
 		};
 		
 	};
@@ -56,33 +69,46 @@ class SettingsList {
 			onButtonClick = "closeDialog 0;";
 			size = 0.03;
 			sizeEx = 0.03;
-			x = 0.2; y = 0.31;
+			x = XCoord + 0.2; y = YCoord + 0.35;
 			w = 0.125; h = 0.06;
 		};
 		class ViewDistance: w_RscEdit {
-			idc = 2222;
+			idc = 1111;
 			sizeEx = 0.03;
 			
-			x  = 0.24; y = 0.2;
+			x  = XCoord + 0.24; y = YCoord + 0.1;
 			w = 0.1; h = 0.030;
 		};
 		class ViewDistanceButton : w_RscButton {
 			text = "Apply";
-			onButtonClick = "[] spawn pm_fnc_viewdistance";
-			x = 0.36; y = 0.195;
+			onButtonClick = "[1] execVM 'player_system\func\settings.sqf'";
+			x = XCoord + 0.36; y = YCoord + 0.095;
 			w = 0.125; h = 0.05;
 		};
 		class ObjectViewDistance: w_RscEdit {
-			idc = 3333;
+			idc = 2222;
 			sizeEx = 0.03;
 			
-			x  = 0.24; y = 0.25;
+			x  = XCoord + 0.24; y = YCoord + 0.15;
 			w = 0.1; h = 0.030;
 		};
 		class ObjectViewDistanceButton : w_RscButton {
 			text = "Apply";
-			onButtonClick = "[] spawn pm_fnc_objectviewdistance";
-			x = 0.36; y = 0.245;
+			onButtonClick = "[2] execVM 'player_system\func\settings.sqf'";
+			x = XCoord + 0.36; y = YCoord + 0.145;
+			w = 0.125; h = 0.05;
+		};
+		class TagsDrawDistance: w_RscEdit {
+			idc = 3333;
+			sizeEx = 0.03;
+			
+			x  = XCoord + 0.24; y = YCoord + 0.2;
+			w = 0.1; h = 0.030;
+		};
+		class TagsDrawDistanceButton : w_RscButton {
+			text = "Apply";
+			onButtonClick = "[3] execVM 'player_system\func\settings.sqf'";
+			x = XCoord + 0.36; y = YCoord + 0.195;
 			w = 0.125; h = 0.05;
 		};
 		

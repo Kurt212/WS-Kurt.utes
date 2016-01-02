@@ -15,6 +15,7 @@ waitUntil{!isnil "bis_fnc_init"}; // ну тут хотя бы понятно ..
 
 showTagsEnabled = 0; // для отрисовки TAG'ов с никами
 WSVAR_SIDE = side player; // пригодится для некоторых вещей
+WSVAR_TAGS_DRAW_DISTANCE = 700;
 
 onKeyDown = compile preprocessFile "core\client\handlers\onKeyDown.sqf";
 
@@ -65,8 +66,13 @@ WSVAR_REPAIRKIT = 0;
 [] execVM "core\client\hud.sqf";
 
 
+/*
+
 // включаем спавн-меню
 [] execVM "core\client\spawning\do_spawn_dialog.sqf";
 
 //приветственное сообщение
 [] execVM "core\client\first_enter\helloMessage.sqf";
+
+
+*/
