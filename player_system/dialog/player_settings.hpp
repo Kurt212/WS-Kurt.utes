@@ -1,5 +1,10 @@
 #include "player_sys.sqf"
 
+#define COORDX (6 * GUI_GRID_W + GUI_GRID_X)
+#define COORDY (4.5 * GUI_GRID_H + GUI_GRID_Y - 0.1)
+
+//(11 / 250)
+
 class playerSettings {
 
 	idd = playersys_DIALOG;
@@ -8,241 +13,237 @@ class playerSettings {
 	onLoad = "[] execVM 'player_system\item_list.sqf'";
 	onUnload = "menuOpened = nil";
 	class controlsBackground {
-		
-		class MainBG : w_RscPicture {
-		
+
+		class Title : RscText
+		{
 			idc = -1;
-			text = "\ca\ui\data\ui_background_controlers_ca.paa";
-			
-			moving = true;
-			
-			x = 0.0; y = 0.1;
-			w = 1.01; h = 0.685;
-		
-		};
-		
-		class MainTitle : w_RscText {
-		
-			idc = -1;
+			colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
 			text = "Игровое меню";
-			sizeEx = 0.05;
-			
-			x = 0.28; y = 0.112;
-			w = 0.3; h = 0.05;
-		
+
+			x = COORDX; y = COORDY + 0.11 - (11 / 250);
+			w = 0.723; h = (1 / 25);
 		};
-		
-		
-		class moneyIcon : w_RscPicture {
-			
-	  		idc = -1;
-        	text = "\CA\misc\data\icons\picture_money_CA.paa";
-        	x = 0.02; y = 0.32;
-			w = 0.06; h = 0.06;
-		};
-		
-		
-		class waterIcon : w_RscPicture {
+
+		class MainBackground : RscText
+		{
+			idc = -1;
+			colorBackground[] = {0,0,0,0.76};
+
+			x = COORDX;	y = COORDY + 0.11;
+			w = 0.492 - (11 / 2500);
+			//h = 16 * GUI_GRID_H;
+			h = 0.36;
+		};		
+				
+		class waterIcon : RscPicture {
 			
 	  		idc = -1;
         	text = "source\waterIcon.paa";
-        	x = 0.02; y = 0.19;
+        	x = COORDX + 0.02; y = COORDY + 0.14;
 			w = 0.06; h = 0.07;
 			
 		};
 		
-		
-		class foodIcon : w_RscPicture {
+		class foodIcon : RscPicture {
 			
       		idc = -1;
         	text = "source\foodIcon.paa";
-        	x = 0.02; y = 0.26;
+        	x = COORDX + 0.02; y = COORDY + 0.21;
 			w = 0.06; h = 0.06;
 		};
 		
-		
-		class moneyText : w_RscText {
+		class moneyIcon : RscPicture {
 			
-			idc = money_text;
-			text = "";
-			
-			sizeEx = 0.035;
-			
-			x = 0.1; y = 0.323;
-			w = 0.3; h = 0.05;
+	  		idc = -1;
+        	text = "source\picture_money_CA.paa";
+        	x = COORDX + 0.02; y = COORDY + 0.27;
+			w = 0.06; h = 0.06;
 		};
-		
-		class foodText : w_RscText {
-			
-			idc = food_text;
-			
-			sizeEx = 0.035;
-			text = "";
-			
-			x = 0.1; y = 0.265;
-			w = 0.3; h = 0.05;
-		};
-		
-		class waterText : w_RscText {
+
+		class waterText : RscText {
 			
 			idc = water_text;
 			text = "";
 			
 			sizeEx = 0.035;
 			
-			x = 0.1; y = 0.205;
+			x = COORDX + 0.1; y = COORDY + 0.155;
+			w = 0.3; h = 0.05;
+		};
+				
+		class foodText : RscText {
+			
+			idc = food_text;
+			
+			sizeEx = 0.035;
+			text = "";
+			
+			x = COORDX + 0.1; y = COORDY + 0.215;
 			w = 0.3; h = 0.05;
 		};
 		
-		class HealthStatusInfo : w_RscText {
+		class moneyText : RscText {
+			
+			idc = money_text;
+			text = "";
+			
+			sizeEx = 0.035;
+			
+			x = COORDX + 0.1; y = COORDY + 0.273;
+			w = 0.3; h = 0.05;
+		};
+		
+		class HealthStatusInfo : RscText {
 			text = "Your health status :";
 			shadow = 1;
 			sizeEx = 0.035;
 			
-			x = 0.02; y = 0.475;
+			x = COORDX + 0.02; y = COORDY + 0.355;
 			w = 0.3; h = 0.05;
 		};
-		
-		
 	};
 	
 	class controls {
-	
-		class itemList : w_Rsclist {
-		
-		idc = item_list;
-		//onLBSelChanged = "[0] execvm 'player_system\itemList.sqf'";
-		
-		x = 0.492; y = 0.200;
-		w = 0.231; h = 0.4;
+
+		class itemList : RscListBox {
+			idc = item_list;
+			colorBackground[] = {0,0,0,0.76};
+			
+			x = COORDX + 0.492; y = COORDY + 0.11;
+			w = 0.231; h = 0.4;
 		
 		};
-		
-		class moneyInput: w_RscCombo {
-			
-			idc = money_value;
-			
-			x  = 0.02; y = 0.410;
-			w = 0.1; h = 0.030;
-		};
-		
-		class DropButton : w_RscButton {
-			
+
+		class DropButton : RscButtonMenu {
+			idc = -1;
+
 			text = "Drop";
 			onButtonClick = "[2, _this select 0] execVM 'player_system\func\drop.sqf'";
-			size = 0.026;
-			sizeEx = 0.026;
 			
-			x = 0.610; y = 0.63;
-			w = 0.125; h = 0.05;
-			
+			x = COORDX + 0.623; y = COORDY + 0.51 + (11 / 2500);
+			w = 0.1; h = 0.04;		
 		};
 		
-		class UseButton : w_RscButton {
-			
+		class UseButton : RscButtonMenu {
+			idc = -1;	
+
 			text = "Use";
 			onButtonClick = "[_this select 0] execVM 'player_system\func\use.sqf'";
-			size = 0.026;
-			sizeEx = 0.026;
-			x = 0.48; y = 0.63;
-			w = 0.125; h = 0.05;
-			
+
+			x = COORDX + 0.492; y = COORDY + 0.51 + (11 / 2500);
+			w = 0.1; h = 0.04;
 		};
 		
-		class DropcButton : w_RscButton {
-
-			text = "Drop Money";
-			//onButtonClick = "[] spawn pm_fnc_drop_money";
+		class moneyInput: RscCombo {
+			idc = money_value;
+			
+			x = COORDX + 0.22; y = COORDY + 0.155;
+			w = 0.1; h = 0.035;
+		};
+		
+		class DropMoneyButton : RscButtonMenu {
+			idc = -1;	
+			
+			text = "Drop money";
 			onButtonClick = "[1, _this select 0] execVM 'player_system\func\drop.sqf'";
-			size = 0.026;
-			sizeEx = 0.026;
 			
-			x = 0.13; y = 0.405;
-			w = 0.145; h = 0.05;
-			
+			x = COORDX + 0.33; y = COORDY + 0.155;
+			//w = 0.125; h = 0.05;		
 		};
 		
-		class CloseButton : w_RscButton {
-			
-			text = "Close";
-			onButtonClick = "closeDialog 0;";
-			size = 0.035;
-			sizeEx = 0.035;
-			x = 0.02; y = 0.7;
-			w = 0.15; h = 0.075;
-			
-		};
-		
-		class GroupManagement : w_RscButton {
-			text = "Group management";
-			onButtonClick = "[] call Kurt_fnc_UIGroupMenuOpen;";
-			
-			x = 0.160; y = 0.63;
-			w = 0.225; h = 0.05;
-		};
-
-		class  settings: w_RscButton {
-			text = "Settings";
-			onButtonClick = "createDialog 'SettingsList';";
-		
-			x = 0.02; y = 0.63;
-			w = 0.125; h = 0.05;
-		};
-		
-		class  CommonHealthStatus: w_RscText {
+		class  CommonHealthStatus: RscText {
 			idc = 81;
 			style =   0x02;
+
 			text = "Common";
 			colorBackground[] = {0,0,0,0};
 			sizeEx = 0.03;
 			shadow = 1;
 			
-			x = 0.02; y = 0.525;
+			x = COORDX + 0.02; y = COORDY + 0.405;
 			w = 0.08; h = 0.05;
 		};
-		class  HeadHealthStatus: w_RscText {
+
+		class  HeadHealthStatus: RscText {
 			idc = 82;
 			style =   0x02;
+
 			text = "Head";
 			colorBackground[] = {0,0,0,0};
 			sizeEx = 0.03;
 			shadow = 1;		
 			
-			x = 0.11; y = 0.525;
+			x = COORDX + 0.11; y = COORDY + 0.405;
 			w = 0.07; h = 0.05;
 		};
-		class  BodyHealthStatus: w_RscText {
+
+		class  BodyHealthStatus: RscText {
 			idc = 83;
 			style =   0x02;
+
 			text = "Body";
 			colorBackground[] = {0,0,0,0};
 			sizeEx = 0.03;
 			shadow = 1;
 			
-			x = 0.181; y = 0.525;
+			x = COORDX + 0.181; y = COORDY + 0.405;
 			w = 0.07; h = 0.05;
 		};
-		class  HandsHealthStatus: w_RscText {
+
+		class  HandsHealthStatus: RscText {
 			idc = 84;
 			style =   0x02;
+
 			text = "Hands";
 			colorBackground[] = {0,0,0,0};
 			sizeEx = 0.03;
 			shadow = 1;
 			
-			x = 0.251; y = 0.525;
+			x = COORDX + 0.251; y = COORDY + 0.405;
 			w = 0.07; h = 0.05;
 		};
-		class LegsHealthStatus: w_RscText {
+
+		class LegsHealthStatus: RscText {
 			idc = 85;
-			style =   0x02;
+			style =  0x02;
+
 			text = "Legs";
 			colorBackground[] = {0,0,0,0};
 			sizeEx = 0.03;
 			shadow = 1;
 			
-			x = 0.322; y = 0.525;
+			x = COORDX + 0.322; y = COORDY + 0.405;
 			w = 0.07; h = 0.05;
+		};
+		
+		class  SettingsButton: RscButtonMenu {
+			idc = -1;	
+
+			text = "Settings";
+			onButtonClick = "createDialog 'SettingsList';";
+		
+			x = COORDX; y = COORDY + 0.47 + (11 / 2500);
+			w = 0.125; h = 0.04;
+		};
+
+		class GroupManagement : RscButtonMenu {
+			idc = -1;	
+
+			text = "Group";
+			onButtonClick = "[] call Kurt_fnc_UIGroupMenuOpen;";
+			
+			x = COORDX + 0.125 + (11 / 2500); y = COORDY + 0.47 + (11 / 2500);
+			w = 0.1; h = 0.04;
+		};
+
+		class CloseButton : RscButtonMenu {
+			idc = -1;	
+			
+			text = "Close";
+			onButtonClick = "closeDialog 0;";
+
+			x = COORDX; y = COORDY + 0.51 + (22 / 2500);
+			w = 0.1; h = 0.04;		
 		};
 
 	};

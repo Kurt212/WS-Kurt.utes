@@ -13,6 +13,7 @@ respawnDelay=10;
 #include "addons\R3F_ARTY_AND_LOG\desc_include.h"
 #include "addons\GroupSystem\GUI.hpp"
 
+#include "common.hpp"
 #include "player_system\dialog\common.hpp"
 
 

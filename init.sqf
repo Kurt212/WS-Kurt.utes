@@ -1,4 +1,4 @@
-//#define ENABLESERVER
+#define ENABLESERVER
 #define ENSABLECLIENT
 
 #include "core\addTowns.sqf"; // добавим сразу все города

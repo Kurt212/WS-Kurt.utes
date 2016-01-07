@@ -41,7 +41,8 @@ class Mission
 		"A3_Structures_F_Ind_Cargo",
 		"A3_Characters_F_BLUFOR",
 		"rhs_c_troops",
-		"rhs_cti_insurgents"
+		"rhs_cti_insurgents",
+		"cup_utes_config"
 	};
 	addOnsAuto[]=
 	{
@@ -49,7 +50,7 @@ class Mission
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f",
 		"rhs_cti_insurgents",
-		"aia_utes_config"
+		"cup_utes_config"
 	};
 	randomSeed=71309;
 	class Intel
@@ -2067,11 +2068,12 @@ class Intro
 {
 	addOns[]=
 	{
-		"aia_utes_config"
+		"aia_utes_config",
+		"cup_utes_config"
 	};
 	addOnsAuto[]=
 	{
-		"aia_utes_config"
+		"cup_utes_config"
 	};
 	randomSeed=71309;
 	class Intel
@@ -2087,11 +2089,12 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"aia_utes_config"
+		"aia_utes_config",
+		"cup_utes_config"
 	};
 	addOnsAuto[]=
 	{
-		"aia_utes_config"
+		"cup_utes_config"
 	};
 	randomSeed=71309;
 	class Intel
@@ -2107,11 +2110,12 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"aia_utes_config"
+		"aia_utes_config",
+		"cup_utes_config"
 	};
 	addOnsAuto[]=
 	{
-		"aia_utes_config"
+		"cup_utes_config"
 	};
 	randomSeed=71309;
 	class Intel
